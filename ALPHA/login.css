@@ -1,0 +1,189 @@
+/* POPPINS FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* *{  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background: url("images/bg-color.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+} */
+ 
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: url("images/bg-color.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Full viewport height */
+    padding: 0; /* Remove any padding here */
+}
+
+.form-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Allow full width */
+    max-width: 512px; /* Maximum width for larger screens */
+    height: auto; /* Dynamic height based on content */
+    margin: 0 auto; /* Center the form box */
+    overflow: hidden;
+    z-index: 2;
+}
+
+.login-container {
+    position: relative; /* Remove absolute positioning */
+    width: 100%; /* Use full width */
+    padding: 20px; /* Internal spacing */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    transition: 0.5s ease-in-out;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+    .wrapper {
+        min-height: 100vh; /* Ensure full viewport height */
+        padding: 10px 0; /* Add minimal padding for smaller screens */
+    }
+
+    .form-box {
+        padding: 10px; /* Minimal padding */
+    }
+
+    .login-container {
+        padding: 15px; /* Adjust internal spacing */
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .wrapper {
+        min-height: 100vh; /* Ensure full viewport height */
+        padding: 5px 0; /* Minimal padding for very small screens */
+    }
+
+    .form-box {
+        padding: 5px; /* Minimal padding */
+    }
+
+    .login-container {
+        padding: 10px; /* Adjust internal spacing */
+    }
+}
+ 
+ 
+ 
+.btn:hover{
+    background: rgba(255, 255, 255, 0.3);
+}
+ 
+.btn.white-btn{
+    background: rgba(255, 255, 255, 0.7);
+}
+.btn.btn.white-btn:hover{
+    background: rgba(255, 255, 255, 0.5);
+}
+.nav-menu-btn{
+    display: none;
+}
+ 
+ 
+ .top{
+    margin-bottom: 40px;
+ }
+h2{
+    color: #fff;
+    /* font-size: 30px; */
+    text-align: center;
+    font-size: 39px;
+    font-weight: 450;
+    /* margin-bottom: 10px; */
+     font-family: "impact",sans-serif;
+}
+ p{
+    font-size: 14px;
+    opacity: 0.8;
+    text-align: center;
+    color: #fff;
+  }
+.input-field{
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    height: 50px;
+    width: 100%;
+    padding: 0 10px 0 45px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    outline: none;
+    transition: .2s ease;
+}
+.input-field:hover, .input-field:focus{
+    background: rgba(255, 255, 255, 0.25);
+}
+::-webkit-input-placeholder{
+    color: #fff;
+}
+.input-box i{
+    position: relative;
+    top: -35px;
+    left: 17px;
+    color: #fff;
+}
+.submit{
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+    height: 45px;
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+.submit:hover{
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+}
+.two-col{
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    font-size: small;
+    margin-top: 10px;
+}
+.two-col .one{
+    display: flex;
+    gap: 5px;
+}
+.two label a{
+    text-decoration: none;
+    color: #fff;
+}
+.two label a:hover{
+    text-decoration: underline;
+}
+ 
+ 

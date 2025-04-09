@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe to Package</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url(images/bg-color.png) no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        
+        h2 {
+            color: white;
+            margin-top: 0;
+        }
+        
+        /* Main Content */
+        .subscription-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .subscription-form,
+        .package-details {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(0, 0, 0, .7);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #6c757d;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #ffc600;
+            box-shadow: 0 0 8px rgba(255, 198, 0, 0.3);
+        }
+        
+        .form-group input::placeholder {
+            color: #aaa;
+        }
+       
+        /* Payment Methods */
+        .payment-methods {
+            margin: 25px 0;
+        }
+        
+        .payment-methods h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: white;
+        }
+        
+        .payment-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .payment-card {
+            flex: 1 1 120px;
+            min-width: 100px;
+            padding: 15px 10px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .payment-card:hover {
+            border-color: #ffc600;
+            transform: translateY(-3px);
+        }
+        
+        .payment-card.selected {
+            border-color: #ffc600;
+            background-color: rgba(255, 198, 0, 0.1);
+            transform: translateY(0);
+        }
+        
+        .payment-card i {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #777;
+        }
+        
+        .payment-card.selected i {
+            color: #ffc600;
+        }
+        
+        .payment-card p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Package Details */
+        .package-title {
+            color: #ffc600;
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+        .package-details h3{
+            color: #aaa;
+             margin-top: 20px;
+        }
+        .package-price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #ffc600;
+        }
+        
+        .package-features {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .package-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+        }
+        
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .package-features li i {
+            margin-right: 10px;
+            color: #ffc600;
+            min-width: 20px;
+        }
+        
+        /* Payment Details Section */
+        .payment-details {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            border: 1px solid #444;
+        }
+        
+        .payment-method-display {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #444;
+        }
+        
+        .payment-method-name {
+            font-weight: bold;
+            color: #ffc600;
+        }
+        
+        .payment-method-img {
+            height: 2.5rem;
+            border-radius: 6px;
+        }
+        
+        .payment-instructions {
+            margin-bottom: 15px;
+        }
+        
+        .payment-instructions p {
+            margin: 8px 0;
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+        
+        .file-upload {
+            margin-top: 20px;
+        }
+        
+        .file-upload-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #6c757d;
+        }
+        
+        .file-upload-input {
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .btn-pay-now {
+            background-color: #ffc600;
+            color: #fff;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+        
+        .btn-pay-now:hover {
+            background-color: rgb(255, 198, 0, .9);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .subscription-container {
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 20px;
+            }
+            
+            .subscription-form,
+            .package-details {
+                width: 100%;
+                padding: 15px;
+            }
+            
+            .payment-cards {
+                flex-direction: column;
+            }
+            
+            .payment-card {
+                width: 100%;
+                flex: 1 1 auto;
+                margin-bottom: 10px;
+            }
+            
+            .package-title {
+                font-size: 1.3rem;
+            }
+            
+            .package-price {
+                font-size: 1.8rem;
+            }
+            
+            .package-features li {
+                font-size: 0.95rem;
+                padding: 8px 0;
+            }
+            
+            .payment-method-img {
+                height: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .form-group input {
+                padding: 10px;
+            }
+            
+            .payment-card {
+                padding: 12px 8px;
+            }
+            
+            .payment-card i {
+                font-size: 1.5rem;
+            }
+            
+            .package-features li {
+                font-size: 0.9rem;
+            }
+            
+            .payment-method-display {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .payment-method-img {
+                align-self: flex-end;
+            }
+        }
+
+        .expiration-message {
+            color: rgb(216, 16, 16) !important;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        .reference-number {
+            font-weight: bold;
+            color: #ffc600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <div class="subscription-container">
+            <!-- Subscription Form -->
+            <div class="subscription-form">
+                <h2>Personal Information</h2>
+                
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="Enter your phone number">
+                </div>
+                
+                <div class="payment-methods">
+                    <h3>Payment Method</h3>
+                    <div class="payment-cards">
+                        <div class="payment-card" onclick="selectPayment(this, 'vodafone')">
+                            <img src="images/vodafone-cash.png" alt="vodafone-cash" class="payment-method-img" style="height: 2.7rem; width: 6rem; margin-top: 10px; border-radius: 8px;">
+                            <p>Vodafone Cash</p>
+                        </div>
+                        <div class="payment-card" onclick="selectPayment(this, 'fawry')">
+                            <img src="images/fawry.png" alt="Fawry" class="payment-method-img" style="height: 2.7rem; width: 6rem; margin-top: 10px; border-radius: 8px;">
+                            <p>Fawry</p>
+                        </div>
+                        <div class="payment-card" onclick="selectPayment(this, 'instapay')">
+                            <img src="images/insta-pay.png" alt="insta-pay" class="payment-method-img" style="height: 2.7rem; width: 6rem; margin-top: 10px; border-radius: 8px;">
+                            <p>Insta Pay</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Payment Details Section (Dynamic) -->
+                <div class="payment-details" id="payment-details">
+                    <div class="payment-method-display">
+                        <span class="payment-method-name" id="selected-method-name">Vodafone Cash</span>
+                        <img src="images/vodafone-cash.png" alt="Payment Method" class="payment-method-img" id="selected-method-img">
+                    </div>
+                    
+                    <div class="payment-instructions" id="payment-instructions">
+                        <p>1. Transfer to 01228563612</p>
+                        <p>2. After the transfer attach the transfer image</p>
+                        <p>3. You will be contacted as soon as possible to confirm the transfer process and start the subscription</p>
+                    </div>
+                    
+                    <div class="file-upload" id="file-upload-section">
+                        <label for="payment-proof" class="file-upload-label">Upload Payment Proof</label>
+                        <input type="file" id="payment-proof" class="file-upload-input" accept="image/*,.pdf">
+                    </div>
+                </div>
+                
+                <button class="btn-pay-now" id="pay-now-btn">PAY NOW</button>
+            </div>
+            
+            <!-- Package Details -->
+            <div class="package-details">
+                <h2 class="package-title" id="package-title">Package Name</h2>
+                <div class="package-price" id="package-price">$0.00</div>
+                
+                <h3>Package Includes:</h3>
+                <ul class="package-features" id="package-features">
+                    <!-- Features will be added dynamically -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // This script will handle the dynamic package details
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get package details from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const packageName = urlParams.get('package') || 'Silver 1 Month';
+            const packagePrice = urlParams.get('price') || '1000.00 EGP';
+            const packageFeatures = getPackageFeatures(packageName);
+            
+            // Update the page with package details
+            document.getElementById('package-title').textContent = packageName;
+            document.getElementById('package-price').textContent = packagePrice;
+            
+            const featuresList = document.getElementById('package-features');
+            featuresList.innerHTML = '';
+            
+            packageFeatures.forEach(feature => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-check"></i> ${feature}`;
+                featuresList.appendChild(li);
+            });
+            
+            // Initially hide payment details and pay now button
+            document.getElementById('payment-details').style.display = 'none';
+            document.getElementById('pay-now-btn').style.display = 'none';
+            
+            // Add click handler for pay now button
+            document.getElementById('pay-now-btn').addEventListener('click', function() {
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                
+                if (!name || !phone) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+                
+                const method = document.querySelector('.payment-card.selected').getAttribute('onclick').match(/'([^']+)'/)[1];
+                const fileInput = document.getElementById('payment-proof');
+                
+                // For Fawry, no file upload is needed
+                if (method !== 'fawry' && (!fileInput || !fileInput.files || fileInput.files.length === 0)) {
+                    alert('Please upload your payment proof');
+                    return;
+                }
+                
+                // Get payment method
+                const paymentMethod = document.getElementById('selected-method-name').textContent;
+                
+                // In a real application, you would submit this data to your server
+                alert(`Payment submitted!\nMethod: ${paymentMethod}\nName: ${name}\nPhone: ${phone}\nPackage: ${packageName}\nPrice: ${packagePrice}`);
+                
+                // Redirect to payment page with all details
+                // window.location.href = `payment.html?package=${encodeURIComponent(packageName)}&price=${encodeURIComponent(packagePrice)}&method=${method}&name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}`;
+            });
+        });
+        
+        // Function to select payment method and show details immediately
+        function selectPayment(element, method) {
+            // Remove selected class from all cards
+            document.querySelectorAll('.payment-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked card
+            element.classList.add('selected');
+            
+            // Set payment method specific details
+            let methodName = '';
+            let methodImage = '';
+            let instructions = [];
+            let referenceNumber = '';
+            
+            switch(method) {
+                case 'vodafone':
+                    methodName = 'Vodafone Cash';
+                    methodImage = 'images/vodafone-cash.png';
+                    instructions = [
+                        '1. Transfer to 01228563612',
+                        '2. After the transfer attach the transfer image',
+                        '3. You will be contacted as soon as possible to confirm the transfer process and start the subscription'
+                    ];
+                    document.getElementById('file-upload-section').style.display = 'block';
+                    break;
+                case 'instapay':
+                    methodName = 'Insta Pay';
+                    methodImage = 'images/insta-pay.png';
+                    instructions = [
+                        '1. Transfer to 01228563612',
+                        '2. After the transfer attach the transfer image',
+                        '3. You will be contacted as soon as possible to confirm the transfer process and start the subscription'
+                    ];
+                    document.getElementById('file-upload-section').style.display = 'block';
+                    break;
+                case 'fawry':
+                    methodName = 'Fawry';
+                    methodImage = 'images/fawry.png';
+                    // Generate a random 10-digit reference number
+                    referenceNumber = Math.floor(1000000000 + Math.random() * 9000000000).toString();
+                    instructions = [
+                        '1. Visit any Fawry payment point',
+                        `2. Use the reference number: <span class="reference-number">${referenceNumber}</span>`,
+                        '3. Complete your payment and keep the receipt'
+                    ];
+                    document.getElementById('file-upload-section').style.display = 'none';
+                    break;
+            }
+            
+            // Update payment details
+            document.getElementById('selected-method-name').textContent = methodName;
+            document.getElementById('selected-method-img').src = methodImage;
+            document.getElementById('selected-method-img').alt = methodName;
+            
+            // Update instructions
+            const instructionsContainer = document.getElementById('payment-instructions');
+            instructionsContainer.innerHTML = '';
+            instructions.forEach(instruction => {
+                const p = document.createElement('p');
+                p.innerHTML = instruction;
+                instructionsContainer.appendChild(p);
+            });
+            
+            // Add expiration message for Fawry
+            if (method === 'fawry') {
+                const expirationMsg = document.createElement('p');
+                expirationMsg.className = 'expiration-message';
+                expirationMsg.textContent = 'Code will expire after 24 hours';
+                instructionsContainer.appendChild(expirationMsg);
+            }
+            
+            // Show payment details and pay now button
+            document.getElementById('payment-details').style.display = 'block';
+            document.getElementById('pay-now-btn').style.display = 'block';
+            
+            // Scroll to payment details if needed
+            document.getElementById('payment-details').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } 
+        // Function to get features based on package name
+        function getPackageFeatures(packageName) {
+            // This would normally come from your database or a more structured source
+            const packages = {
+                'Silver 1 Month': [
+                    'Customized workout plans with photos and videos',
+                    'Cardio and abs routines',
+                    '100% customizable diet with your food choices',
+                    'Flexible food substitution',
+                    'Supplements recommendations',
+                    'Frequently Asked Questions',
+                    'Daily follow up with the team via WhatsApp'
+                ],
+                'Silver 3 Months': [
+                    'Customized workout plans with photos and videos',
+                    'Cardio and abs routines',
+                    '100% customizable diet with your food choices',
+                    'Flexible food substitution',
+                    'Supplements recommendations',
+                    'Frequently Asked Questions',
+                    'Daily follow up with the team via WhatsApp',
+                    'Special discount for 3-month subscription'
+                ],
+                'Golden 3': [
+                    'Daily check-ins and follow up via WhatsApp',
+                    'Tailored and advanced diets changed daily',
+                    'Flexible food substitution',
+                    'Customized workout plans with photos/videos',
+                    'Alpha athletes cardio and abs routines',
+                    'Supplements and enhancers recommendations',
+                    'Blood work and medical follow up',
+                    'Weekly video posing adjustments via FaceTime'
+                ]
+            };
+            
+            return packages[packageName] || packages['Golden 3'];
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+    <!-- Head content remains the same as your index.html -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1," />
+    <meta name="description" content="" />
+    <meta name="author" content="Magdy" />
+    <title>Client Transformation | Alpha Team</title>
+    <link rel="icon" type="image/png" href="/images/logo-b.png" />
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* Client Page Specific Styles */
+        body {
+            background: url('images/bg-color.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+        .client-header {
+            padding: 100px 0 50px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .client-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+        }
+        
+        .client-image-container {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .client-image {
+            width: 100%;
+            /* max-width: 370px; */
+            max-width: 80%;
+            margin-top: 5rem;
+            height: 450px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(255, 198, 0, 0.3);
+            object-fit: cover;
+        }
+        
+        .client-name {
+            font-size: 2.5rem;
+            color: #ffc600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .client-comment {
+            font-size: 1.5rem;
+            color: #fff;
+            line-height: 1.5;
+        }
+        
+        .program-title {
+            font-size: 2rem;
+            color: #ffc600;
+            text-align: center;
+            margin: 50px 0;
+            text-transform: uppercase;
+        }
+        
+        .program-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+        
+        .program-card {
+            background: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 350px;
+            min-height: 450px; /* Taller cards */
+            display: flex;
+            flex-direction: column;
+            transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+            line-height: 1.6;
+
+        }
+        
+        .program-card-image {
+            width: 100%;
+            height: 250px; /* Increased height */
+            object-fit: cover;
+        }
+        
+        .program-card-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            
+        }
+        
+        .program-card-title {
+            color: #ffc600;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .program-card p {
+            flex: 1;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .client-header {
+                flex-direction: column;
+                padding: 80px 0 30px;
+                /* max-width: 80%; */
+            }
+            
+            .client-text {
+                order: 2;
+                padding: 20px 15px 0;
+            }
+            
+            .client-image-container {
+                order: 1;
+                /* padding: 0 15px 20px; */
+            }
+            
+            .client-image {
+                /* max-width: 270px; Smaller photo on mobile */
+                max-width: 70%;
+
+            }
+            
+            .client-name {
+                font-size: 1.8rem;
+                text-align: center;
+            }
+            
+            .client-comment {
+                font-size: 1.2rem;
+                text-align: center;
+            }
+            
+            .program-title {
+                font-size: 1.5rem;
+                margin: 30px 0;
+            }
+            
+            .program-card {
+                min-height: 400px;
+                max-width: 50%;
+            }
+            
+            .program-card-image {
+                height: 200px;
+            }
+        }
+        @media (max-width: 518px) {
+            .program-card {
+                max-width: 80%;
+            }
+        }
+        @media (min-width: 769px) {
+            .client-image{
+                max-width: 90%;
+            }
+        }
+        .client-comment-container {
+        position: relative;
+        padding: 30px;
+        background: rgba(26, 26, 26, 0.8);
+        border-radius: 8px;
+        border-left: 4px solid #ffc600;
+    }
+    
+    .client-comment {
+        font-size: 1.4rem;
+        color: #fff;
+        line-height: 1.6;
+        margin: 0;
+        font-style: italic;
+    }
+    
+    .quote-icon {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        color: rgba(255, 198, 0, 0.2);
+        font-size: 3rem;
+    }
+    
+    @media (max-width: 768px) {
+        .client-comment {
+            font-size: 1.2rem;
+        }
+        
+        .client-comment-container {
+            padding: 20px;
+        }
+    }
+
+    #mainNav .dropdown-toggle::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            width: 40%;
+            height: 4px;
+            border-radius: 10px;
+            background-color: #ffc600;
+            transition: all .5s;
+            transform-origin: left;
+            transform: scale(0);
+        }
+        #mainNav .dropdown-toggle.active::after, #mainNav .dropdown-toggle:hover::after {
+            transform: scale(1);
+        }
+#mainNav .scrolled{
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+}
+       #mainNav {
+             position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        
+        .dropdown-toggle {
+            font-size: .95rem;
+            color: #fff;
+            letter-spacing: 1px;
+            position: relative;
+            display: block;
+            padding: .5rem 1rem;
+            padding-right: 1rem;
+            padding-left: 1rem;
+            text-decoration: none;
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+        }
+        @media (max-width: 500px) {
+            .dropdown-toggle {
+                color: #fff;
+                padding-left: 0
+            }
+        }
+            .dropdown-toggle:hover {
+                color: #ffc600;
+            }
+        .dropdown-item {
+            
+            padding: 0.6rem 1rem;
+            
+        }
+
+        /* Cards Animation*/
+        .program-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 1;
+    background: #1a1a1a;
+}
+
+.program-card::before {
+    content: "";
+    position: absolute;
+    height: 160%;
+    width: 160%;
+    border-radius: inherit;
+    background: linear-gradient(to right, #ffc600, #ffc600);
+    transform-origin: center;
+    animation: moving 4.8s linear infinite paused;
+    transition: all 0.88s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: -1;
+    opacity: 0;
+}
+
+.program-card:hover::before {
+    animation-play-state: running;
+    opacity: 1;
+    width: 20%;
+}
+
+.program-card:hover {
+    box-shadow: 0rem 6px 13px rgba(255, 198, 0, 0.1),
+                0rem 24px 24px rgba(255, 198, 0, 0.09),
+                0rem 55px 33px rgba(255, 198, 0, 0.05),
+                0rem 97px 39px rgba(255, 198, 0, 0.01), 
+                0rem 152px 43px rgba(255, 198, 0, 0);
+    transform: scale(1.05);
+}
+
+@keyframes moving {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Keep your existing card content styles */
+.program-card-content {
+    position: relative;
+    z-index: 2;
+    background: rgba(26, 26, 26, 0.9);
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.program-card:hover .program-card-content {
+    background: rgba(26, 26, 26, 0.7);
+}
+
+/* Ensure image stays properly positioned */
+.program-card-image {
+    position: relative;
+    z-index: 1;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.program-card:hover .program-card-image {
+    transform: scale(1.02);
+}
+
+    </style>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top">
+                <img src="images/logo-w.png" style="transform: scale(1.7);" alt="logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <!-- <i class="fas fa-bars ms-1"></i> -->
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ms-auto py-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-capitalize fw-normal fm-pop me-2" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-capitalize fw-normal fm-pop me-2" href="index.html#packages">Packages</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-capitalize fw-normal fm-pop me-2" href="index.html#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-capitalize fw-normal fm-pop me-2"
+                           href="index.html#transformation">transformation</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <button class="bg-transparent border-0  dropdown-toggle text-capitalize fw-normal fm-pop" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Services
+                            <span style="margin-inline-start:5px" class="fa fa-chevron-down"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                           
+                            <li>
+                                <a class="dropdown-item" href="#faq">
+                                    FAQs
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="calories-calc.html">
+                                    calories calculator
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="substitution.html">
+                                    Substitution
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link text-capitalize fw-normal  fm-pop me-2" href="#faq">FAQs</a></li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link text-capitalize fw-normal fm-pop me-2" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-capitalize fw-normal fm-pop me-2" href="register.html">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Client Content Section -->
+    <main class="flex-shrink-0">
+        <section class="client-header">
+            <div class="client-text">
+                <h1 id="clientName" class="client-name"></h1>
+                <div class="client-comment-container">
+                    <blockquote id="clientComment" class="client-comment"></blockquote>
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="client-image-container" style="width: 100%; overflow: hidden;">
+                <img id="clientImage" src="images/Mohamed.jpg" alt="Client" class="client-image" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </section>
+
+        <section>
+            <h2 class="program-title">YOUR TRAINING PROGRAM INCLUDES:</h2>
+            <div class="program-cards">
+                <div class="program-card" style="width: 100%; overflow: hidden;">
+                    <img src="images/card4.PNG" alt="Custom Workouts" class="program-card-image" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="program-card-content">
+                        <h3 class="program-card-title">CUSTOM WORKOUTS</h3>
+                        <p>Personalized workout plans tailored to your body type and goals, with detailed instructions and video demonstrations for each exercise to ensure proper form and maximum results.</p>
+                    </div>
+                </div>
+                <div class="program-card" style="width: 100%; overflow: hidden;">
+                    <img src="images/card6.PNG" alt="Nutrition Plan" class="program-card-image" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="program-card-content">
+                        <h3 class="program-card-title">NUTRITION PLAN</h3>
+                        <p>Customized diet plan that fits your lifestyle and preferences, with flexible meal options, portion guidance, and macronutrient targets to fuel your workouts and recovery.</p>
+                    </div>
+                </div>
+                <div class="program-card" style="width: 100%; overflow: hidden;">
+                    <img src="images/card5.PNG" alt="Daily Support" class="program-card-image" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="program-card-content">
+                        <h3 class="program-card-title">DAILY SUPPORT</h3>
+                        <p>24/7 access to coaching support and guidance through our dedicated platform, with weekly check-ins, progress tracking, and adjustments to keep you on track toward your goals.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+  <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="text-center">
+                <img src="images/logo-w.png" alt="logo" style="width: 130px;padding: 0">
+                <h4 class="text-uppercase mb-0 text-white display-4">ALPHA TEAM</h4>
+            </div>
+            <div class="w-100 mb-1 d-flex justify-content-center align-items-center gap-1 flex-wrap">
+                    <div class="col text-center">
+                        <img style="max-width:100px" src="images/1.png" class="" />
+                    </div>
+                    <div class="col text-center">
+                        <img style="max-width:100px" src="images/2.png" class="" />
+                    </div>
+                    <div class="col text-center">
+                        <img style="max-width:100px" src="images/3.png" class="" />
+                    </div>
+                    <div class="col text-center">
+                        <img style="max-width:100px" src="images/4.png" class="" />
+                    </div>
+                    <div class="col text-center">
+                        <img style="max-width:100px" src="images/5.png" class="" />
+                    </div>
+                    <div class="col text-center">
+                        <img style="max-width:100px" src="images/6.png" class="" />
+                    </div>
+                    <div class="col text-center">
+                        <img style="max-width:100px" src="images/7.png" class="" />
+                    </div>
+                    <div class="col text-center">
+                        <img style="max-width:100px" src="images/8.png" class="" />
+                    </div>
+                    <div class="col text-center">
+                        <img style="max-width:100px" src="images/9.png" class="" />
+                    </div>
+
+              
+            </div>
+            <ul>
+
+           
+                <li class="mt-1">
+                    &copy; Copyright 2025 <span class="text-primary"><a href="https://linktr.ee/mohamed_074">Mohamed Elsayed</a></span>. All right reserved.<br>Privacy
+                    Policy | Terms and Conditions
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+
+
+    <script>
+        // Get client data from sessionStorage
+        const clientData = JSON.parse(sessionStorage.getItem('clientData'));
+        
+        if (clientData) {
+            document.getElementById('clientImage').src = clientData.image;
+            document.getElementById('clientName').textContent = clientData.name;
+            document.getElementById('clientComment').textContent = clientData.comment;
+        } else {
+            // Redirect back if no data
+            window.location.href = 'index.html';
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+    const navbarToggler = document.querySelector(".navbar-toggler");
+     const navbarMenu = document.querySelector("#navbarResponsive");
+     const dropdownToggle = document.querySelector(".dropdown-toggle");
+    const dropdownMenu = document.querySelector(".dropdown-menu");
+    const dropdownItems = document.querySelectorAll(".dropdown-menu .dropdown-item"); // Dropdown items
+    const navLinks = document.querySelectorAll("#navbarResponsive .nav-link"); // Navbar links
+    const navBarItems = document.querySelectorAll(".navbar-nav .nav-item")
+
+
+    navbarToggler.addEventListener("click", function () {
+        if (navbarMenu.classList.contains("show")) {
+            closeNavbar();
+        } else {
+            navbarMenu.classList.add("show");
+            navbarMenu.style.visibility = "visible";
+            setTimeout(() => {
+                navbarMenu.style.maxHeight = "500px"; // Adjust height smoothly
+                navbarMenu.style.opacity = "1";
+            }, 10);
+        }
+    });
+
+
+navBarItems.forEach(item => {
+item.addEventListener("click", () => {
+    closeNavbar()
+})})
+
+
+    // Toggle dropdown menu inside navbar
+    dropdownToggle.addEventListener("click", function (event) {
+        event.stopPropagation(); // Prevent navbar from closing
+        dropdownMenu.classList.toggle("show");
+    });
+
+    // Close dropdown menu AND navbar when clicking on a dropdown item
+    dropdownItems.forEach(item => {
+        item.addEventListener("click", function () {
+            dropdownMenu.classList.remove("show"); // Close dropdown
+            closeNavbar(); // Also close the entire menu in mobile view
+        });
+    });
+
+    // Smooth scroll and close navbar when clicking a nav link
+    navLinks.forEach(link => {
+        link.addEventListener("click", function (event) {
+            const targetId = this.getAttribute("href"); // Get section ID
+            if (targetId.startsWith("#")) {
+                event.preventDefault(); // Prevent instant jump
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 50, // Adjust offset if needed
+                        behavior: "smooth" // Smooth scrolling effect
+                    });
+                }
+                closeNavbar();
+            }
+        });
+    });
+
+    // Close navbar & dropdown when clicking outside
+    document.addEventListener("click", function (event) {
+        if (!navbarToggler.contains(event.target) && !navbarMenu.contains(event.target)) {
+            closeNavbar();
+        }
+    });
+
+    // Function to close navbar smoothly
+    function closeNavbar() {
+        navbarMenu.style.maxHeight = "0";
+        navbarMenu.style.opacity = "0";
+        navbarMenu.style.visibility = "hidden";
+        setTimeout(() => navbarMenu.classList.remove("show"), 800);
+        dropdownMenu.classList.remove("show");
+    }
+});
+
+    </script>
+    
+    <!-- Your existing scripts -->
+    <script src="main.js"></script>
+</body>
+</html>

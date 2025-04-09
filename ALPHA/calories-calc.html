@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1," />
+    <meta name="description" content="" />
+    <meta name="author" content="Magdy" />
+    <title>Alpha team | Calories Calculator</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/png" href="images/logo-b.png" />
+  
+    <!--  CSS -->
+    <link href="style.css" rel="stylesheet">
+
+    <style>
+        html, body {
+            scroll-behavior: smooth
+        }
+
+
+      
+       
+        #mainNav .dropdown-toggle::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            width: 40%;
+            height: 4px;
+            border-radius: 10px;
+            background-color: #ffc600;
+            transition: all .5s;
+            transform-origin: left;
+            transform: scale(0);
+        }
+        #mainNav .dropdown-toggle.active::after, #mainNav .dropdown-toggle:hover::after {
+            transform: scale(1);
+        }
+
+       
+        .dropdown-toggle {
+            font-size: .95rem;
+            color: #fff;
+            letter-spacing: 1px;
+            position: relative;
+            display: block;
+            padding: .5rem 1rem;
+            padding-right: 1rem;
+            padding-left: 1rem;
+            text-decoration: none;
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+        }
+        @media (max-width: 500px) {
+            .dropdown-toggle {
+                color: #fff;
+                padding-left: 0
+            }
+        }
+            .dropdown-toggle:hover {
+                color: #ffc600;
+            }
+        .dropdown-item {
+            
+            padding: 0.6rem 1rem;
+            
+        }
+    </style>
+
+ 
+</head>
+
+<body id="page-top">
+
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top">
+                <img src="images/logo-w.png" style="transform: scale(1.7);" alt="logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars ms-1"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ms-auto py-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link text-capitalize fw-normal fm-pop me-2" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-capitalize fw-normal fm-pop me-2" href="index.html#packages">Packages</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-capitalize fw-normal fm-pop me-2" href="index.html#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-capitalize fw-normal fm-pop me-2"
+                           href="index.html#transformation">transformation</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <button class="bg-transparent border-0  dropdown-toggle text-capitalize fw-normal fm-pop" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Services
+                            <span style="margin-inline-start:5px" class="fa fa-chevron-down"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                           
+                            <li>
+                                <a class="dropdown-item" href="index.html#FAQs">
+                                    FAQs
+                                </a>
+                            </li>
+                           
+                             <li>
+                                <a class="dropdown-item" href="calories-calc.html">
+                                    Calories Calculator
+                                </a>
+                            </li> 
+                            <li>
+                                <a class="dropdown-item" href="substitution.html">
+                                    Substitution
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="login.html">
+                                    LOGIN
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="register.html">
+                                    REGISTER
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link text-capitalize fw-normal  fm-pop me-2" href="index.html#FAQs">FAQs</a></li>
+                  
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    
+
+<!-- hero -->
+<!-- start -->
+<section style="padding-top: 150px !important;"
+         class="min-vh-100 overflow-hidden d-flex position-relative align-items-center justify-content-center hero-calc">
+    <img src="images/you-have-bg.png" class="position-absolute " style="left: 0;
+    width: 500px;
+    height: 500px;
+    object-fit: contain;" alt="background-image">
+    <div style="max-width: 800px;background-color: #5959598c;" class="calc-outer-wrap card">
+        <form class="calc-form rounded-3 card-body p-4 " id="calc-form">
+            <h3 class="text-center text-uppercase fw-bolder mb-4 text-white display-4 fm-pop">
+                Calorie Calculator
+            </h3>
+            <div class="container">
+
+                <div class="stepwizard d-none w-100">
+                    <div class="stepwizard-row setup-panel ">
+                        <div class="stepwizard-step">
+                            <a href="#step-1" style="background-color: #000;color: #fff;" type="button"
+                               class="btn btn-primary btn-circle border-white border  ">1</a>
+                        </div>
+                        <div class="stepwizard-step">
+                            <a href="#step-2" style="background-color: #000;color: #fff;" type="button"
+                               class="btn btn-default btn-circle border-white border  " disabled="disabled">2</a>
+                        </div>
+                        <div class="stepwizard-step">
+                            <a href="#step-3" style="background-color: #000;color: #fff;" type="button"
+                               class="btn btn-default btn-circle border-white border  " disabled="disabled">3</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <form id="calc-form" class="mt-4 text-white">
+                    <div class="row setup-content" id="step-1">
+                        <div class="col-xs-6 col-md-offset-3">
+                            <div class="col-md-12">
+                                <!-- ?? form -->
+
+                                <div class="form-group text-white">
+                                    <label class="mb-2" for="">
+                                        Gender:
+                                    </label>
+                                    <div class="row row-cols-2">
+                                        <div style="padding-right: 8px !important;">
+                                            <div class="custom-control my-radio border border-white  rounded-pill mb-2 position-relative custom-radio">
+                                                <input type="radio" id="genderRadio1" name="genderRadio" value="MALE"
+                                                       class="custom-control-input " checked>
+                                                <label class="custom-control-label " for="genderRadio1">
+                                                    Male
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                        <div style="padding-left: 8px !important;">
+                                            <div class="custom-control my-radio border border-white  rounded-pill mb-2 position-relative custom-radio">
+                                                <input type="radio" id="genderRadio2" name="genderRadio" value="FEMALE"
+                                                       class="custom-control-input ">
+                                                <label class="custom-control-label " for="genderRadio2">Female</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="control-label text-white mb-2">Age:</label>
+                                    <input required maxlength="200" type="number" id="AGEINPUT" class="form-control"
+                                           placeholder="EX: 27">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="control-label text-white mb-2">Weight(KG):</label>
+                                    <input required maxlength="200" type="number" id="WEIGHTInput" class="form-control"
+                                           placeholder="EX: 80">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label text-white mb-2">Height(CM):</label>
+                                    <input required maxlength="200" type="number" id="HEIGHTInput" class="form-control"
+                                           placeholder="EX: 185">
+                                </div>
+                           
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row setup-content" id="step-2">
+                        <div class="col-xs-6 col-md-offset-3">
+                            <div class="col-md-12">
+
+                                <!-- ?? form -->
+
+                                <div class="form-group text-white mb-3">
+                                    <label class="mb-2" for="">
+                                        The number of exercise times during the week:
+                                    </label>
+                                    <div class="row g-3  row-cols-md-2 ">
+                                        <div style="padding: 0 8px !important;margin-bottom: 15px !important;">
+                                            <div class="custom-control my-radio border border-white  rounded-pill mb-2 position-relative custom-radio">
+                                                <input type="radio" id="exTimes0" name="exTimes" value="0T" class="custom-control-input "
+                                                       checked>
+                                                <label class="custom-control-label " for="exTimes0">
+                                                    little or no exercise
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                        <div style="padding: 0 8px !important;margin-bottom: 15px !important;">
+                                            <div class="custom-control my-radio border border-white  rounded-pill mb-2 position-relative custom-radio">
+                                                <input type="radio" id="exTimes1" name="exTimes" value="13T" class="custom-control-input "
+                                                       checked>
+                                                <label class="custom-control-label " for="exTimes1">
+                                                    1 - 3 times
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                        <div style="padding: 0 8px !important;margin-bottom: 15px !important;">
+                                            <div class="custom-control my-radio border border-white  rounded-pill mb-2 position-relative custom-radio">
+                                                <input type="radio" id="exTimes2" name="exTimes" value="35T" class="custom-control-input ">
+                                                <label class="custom-control-label " for="exTimes2">
+                                                    3 - 5 times
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                        <div style="padding: 0 8px !important;margin-bottom: 15px !important;">
+                                            <div class="custom-control my-radio border border-white  rounded-pill mb-2 position-relative custom-radio">
+                                                <input type="radio" id="exTimes3" name="exTimes" value="57T" class="custom-control-input ">
+                                                <label class="custom-control-label " for="exTimes3">
+                                                    5 - 7 times
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div style="padding: 0 8px !important;margin-bottom: 15px !important;">
+                                            <div class="custom-control my-radio border border-white  rounded-pill mb-2 position-relative custom-radio">
+                                                <input type="radio" id="exTimes4" name="exTimes" value="67T" class="custom-control-input ">
+                                                <label class="custom-control-label " for="exTimes4">
+                                                    intense exercise 6-7 per week
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <!-- ?? form -->
+                                <button class="btn btn-dark bg-black btn-block w-100 mt-3 btn-rounded rounded-pill nextBtn "
+                                        type="button" id="calcBtn" style="padding: 12px !important;">
+                                    Calc
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row setup-content" id="step-3">
+                        <div class="col-xs-6 mt-3 col-md-offset-3">
+                            <div id="results" class="col-md-12">
+                                <div id="results_div">
+                                    <div class="border-start border-warning ps-2 border-4">
+                                        <h1 class="text-white fw-bolder text-start text-uppercase mb-1">
+                                            Calories per day to maintain your
+                                            weight
+                                        </h1>
+                                        <h1 id="allCalRes" class="text-start text-warning mb-3 display-5 fw-light fm-pop"
+                                            style="margin-bottom: 40px !important;"></h1>
+                                    </div>
+
+                                    <h3 id="MildWeight" class="text-start text-white mb-3 display-5 fw-light fm-pop"
+                                        style="margin-bottom: 40px !important;"></h3>
+
+                                    <h3 id="LossWeight" class="text-start text-white mb-3 display-5 fw-light fm-pop"
+                                        style="margin-bottom: 40px !important;"></h3>
+
+                                    <h3 id="ExtremeWeight" class="text-start text-white mb-3 display-5 fw-light fm-pop"
+                                        style="margin-bottom: 40px !important;"></h3>
+
+
+
+
+
+                                </div>
+                                <div id="form-error" class="alert alert-warning" style="display:none;"></div>
+                                <div class="row row-cols-2 g-2" style="margin-top: 20px !important;">
+                                    <div style="padding: 0 10px !important;">
+                                        <button class="btn btn-dark bg-black btn-block w-100  btn-rounded rounded-pill  " type="button"
+                                                onclick="location.reload()" style="padding: 10px !important;">
+                                            Re-calc
+                                        </button>
+                                    </div>
+                                    <div style="padding: 0 10px !important;">
+                                        <a href="/" class="btn btn-light btn-block w-100  btn-rounded rounded-pill " type="button"
+                                           style="padding: 10px !important;">
+                                            To
+                                            home
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+
+        </form>
+    </div><!--  /.calc-outer-wrap -->
+</section>
+<!-- end -->
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="text-center">
+                <img src="images/logo-w.png" alt="logo" style="width: 130px;padding: 0">
+                <h4 class="text-uppercase mb-0 text-white display-4">ALPHA TEAM</h4>
+            </div>
+            <div class="w-100 mb-1 d-flex justify-content-center align-items-center gap-1 flex-wrap">
+                    <div class="col text-center">
+                        <img style="max-width:100px" src="images/1.png" class="" />
+                    </div>
+                    <div class="col text-center">
+                        <img style="max-width:100px" src="images/2.png" class="" />
+                    </div>
+                    <div class="col text-center">
+                        <img style="max-width:100px" src="images/3.png" class="" />
+                    </div>
+                    <div class="col text-center">
+                        <img style="max-width:100px" src="images/4.png" cass="" />
+                    </div>
+                    <div class="col text-center">
+                        <img style="max-width:100px" src="images/5.png" class="" />
+                    </div>
+                    <div class="col text-center">
+                        <img style="max-width:100px" src="images/6.png" class="" />
+                    </div>
+                    <div class="col text-center">
+                        <img style="max-width:100px" src="images/7.png" class="" />
+                    </div>
+                    <div class="col text-center">
+                        <img style="max-width:100px" src="images/8.png" class="" />
+                    </div>
+                    <div class="col text-center">
+                        <img style="max-width:100px" src="images/9.png" class="" />
+                    </div>
+
+              
+            </div>
+            <ul>
+ 
+                <li class="mt-1">
+                    &copy; Copyright 2025 <span class="text-primary"><a href="https://linktr.ee/mohamed_074">Mohamed Elsayed</a></span>. All right reserved.<br>Privacy
+                    Policy | Terms and Conditions
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+ 
+
+    <!-- Core theme JS-->
+    <script src="main.js"></script>
+
+ 
+
+   
+    <!-- calc JS -->
+    <script src="calc.js"></script>
+
+   <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const navbarToggler = document.querySelector(".navbar-toggler");
+    const navbarMenu = document.querySelector("#navbarResponsive");
+    const dropdownToggle = document.querySelector(".dropdown-toggle");
+    const dropdownMenu = document.querySelector(".dropdown-menu");
+    const dropdownItems = document.querySelectorAll(".dropdown-menu .dropdown-item"); // Dropdown items
+    const navLinks = document.querySelectorAll("#navbarResponsive .nav-link"); // Navbar links
+
+    navbarToggler.addEventListener("click", function () {
+        if (navbarMenu.classList.contains("show")) {
+            closeNavbar();
+        } else {
+            navbarMenu.classList.add("show");
+            navbarMenu.style.visibility = "visible";
+            setTimeout(() => {
+                navbarMenu.style.maxHeight = "500px"; // Adjust height smoothly
+                navbarMenu.style.opacity = "1";
+            }, 10);
+        }
+    });
+
+    // Toggle dropdown menu inside navbar
+    dropdownToggle.addEventListener("click", function (event) {
+        event.stopPropagation(); // Prevent navbar from closing
+        dropdownMenu.classList.toggle("show");
+    });
+
+    // Close dropdown menu AND navbar when clicking on a dropdown item
+    dropdownItems.forEach(item => {
+        item.addEventListener("click", function () {
+            dropdownMenu.classList.remove("show"); // Close dropdown
+            closeNavbar(); // Also close the entire menu in mobile view
+        });
+    });
+
+    // Smooth scroll and close navbar when clicking a nav link
+    navLinks.forEach(link => {
+        link.addEventListener("click", function (event) {
+            const targetId = this.getAttribute("href"); // Get section ID
+            if (targetId.startsWith("#")) {
+                event.preventDefault(); // Prevent instant jump
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 50, // Adjust offset if needed
+                        behavior: "smooth" // Smooth scrolling effect
+                    });
+                }
+                closeNavbar();
+            }
+        });
+    });
+
+    // Close navbar & dropdown when clicking outside
+    document.addEventListener("click", function (event) {
+        if (!navbarToggler.contains(event.target) && !navbarMenu.contains(event.target)) {
+            closeNavbar();
+        }
+    });
+
+    // Function to close navbar smoothly
+    function closeNavbar() {
+        navbarMenu.style.maxHeight = "0";
+        navbarMenu.style.opacity = "0";
+        navbarMenu.style.visibility = "hidden";
+        setTimeout(() => navbarMenu.classList.remove("show"), 800);
+        dropdownMenu.classList.remove("show");
+    }
+});
+
+                 
+ 
+</script>
+
+    
+
+ 
+
+</body>
+
+</html>

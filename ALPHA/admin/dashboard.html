@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+
+    <!--font awesome-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!--css file-->
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <section class="sidebar">
+      <a href="#" class="logo">
+        <!-- <i class="fab fa-slack"></i> -->
+        <img src="data:image/png;base64,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" alt="admin-settings-male">
+         <!-- <span class="text">Admin Panel</span> -->
+      </a>
+
+      <ul class="side-menu top">
+        <li class="active" data-section="dashboard">
+          <a href="#" class="nav-link">
+            <i class="fas fa-border-all"></i>
+            <span class="text">Dashboard</span>
+          </a>
+        </li>
+        <li data-section="feedback">
+          <a href="#" class="nav-link">
+            <i class="fas fa-comment"></i>
+            <span class="text">Feedback</span>
+          </a>
+        </li>
+        <li data-section="packages">
+          <a href="#" class="nav-link">
+            <i class="fas fa-cubes"></i>
+            <span class="text">Packages</span>
+          </a>
+        </li>
+        <li data-section="transformations">
+          <a href="#" class="nav-link">
+            <i class="fas fa-images"></i>
+            <span class="text">Transformations</span>
+          </a>
+        </li>
+        <li data-section="admins">
+          <a href="#" class="nav-link">
+            <i class="fas fa-people-group"></i>
+            <span class="text">Admins</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="side-menu">
+        <li>
+          <a href="#">
+            <i class="fas fa-cog"></i>
+            <span class="text">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="index.html" class="logout">
+            <i class="fas fa-right-from-bracket"></i>
+            <span class="text">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+
+    <section class="content">
+      <nav>
+        <i class="fas fa-bars menu-btn"></i>
+        <a href="#" class="nav-link">Categories</a>
+        <form action="#">
+          <div class="form-input">
+            <input type="search" placeholder="search..." />
+            <button class="search-btn">
+              <i class="fas fa-search search-icon"></i>
+            </button>
+          </div>
+        </form>
+
+        <input type="checkbox" hidden id="switch-mode" />
+        <label for="switch-mode" class="switch-mode"></label>
+
+        <!-- <a href="#" class="notification">
+          <i class="fas fa-bell"></i>
+          <span class="num">28</span>
+        </a>
+
+        <a href="#" class="profile">
+          <img src="profile.png" alt="" />
+        </a> -->
+      </nav>
+
+      <main>
+        <div class="head-title">
+          <div class="left">
+            <h1>Dashboard</h1>
+            <ul class="breadcrumb">
+              <li>
+                <a href="#">Dashboard</a>
+              </li>
+              <i class="fas fa-chevron-right"></i>
+              <li>
+                <a href="#" class="active">Home</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+                    <!-- Dashboard Section -->
+<section id="dashboard" class="content-section active">
+  <div class="box-info">
+    <li>
+      <i class="fas fa-comment"></i>
+      <span class="text">
+        <h4>Pending Feedbacks</h4>
+        <h2>11</h2>
+      </span>
+    </li>
+    <li>
+      <i class="fas fa-cubes"></i>
+      <span class="text">
+        <h4>Active Packages</h4>
+        <h2>3</h2>
+      </span>
+    </li>
+    <li>
+      <i class="fas fa-images"></i>
+      <span class="text">
+        <h4>Transformations</h4>
+        <h2>20</h2>
+      </span>
+    </li>
+  </div>
+</section>
+
+    <!-- Feedback Section -->
+    <section id="feedback" class="content-section">
+      <h2>Feedback Management</h2>
+      <div class="feedback-list">
+          <!-- Feedback items will be dynamically added here -->
+      </div>
+  </section>
+
+              <!-- Packages Section -->
+              <section id="packages" class="content-section">
+                <h2>Packages Management</h2>
+                <button class="add-btn" id="add-package-btn">
+                    <i class="fas fa-plus"></i> Add New Package
+                </button>
+                <div class="packages-grid">
+                    <!-- Packages will be dynamically added here -->
+                </div>
+            </section>
+
+            <!-- Transformations Section -->
+            <section id="transformations" class="content-section">
+                <h2>Transformations Gallery</h2>
+                <button class="add-btn" id="add-transformation-btn">
+                    <i class="fas fa-plus"></i> Add New Transformation
+                </button>
+                <div class="transformations-grid">
+                    <!-- Transformation images will be dynamically added here -->
+                </div>
+            </section>
+
+            <!-- Admins Section -->
+            <section id="admins" class="content-section">
+                <h2>Manage Admins</h2>
+                <button class="add-btn" id="add-admin-btn">
+                    <i class="fas fa-plus"></i> Add New Admin
+                </button>
+                <div class="admins-list">
+                    <!-- Admin users will be dynamically added here -->
+                </div>
+            </section>
+
+
+          
+        </div>
+      </main>
+    </section>
+
+
+    
+    <!-- Modals -->
+    <div id="package-modal" class="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Add/Edit Package</h2>
+          <form id="package-form">
+              <input type="text" placeholder="Package Name" required>
+              <input type="number" placeholder="Price" required>
+              <textarea placeholder="Package Details" required></textarea>
+              <button type="submit" class="submit-btn">Save Package</button>
+          </form>
+      </div>
+  </div>
+
+  <div id="transformation-modal" class="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Add Transformation</h2>
+          <form id="transformation-form">
+              <input type="file" accept="image/*" required>
+              <input type="text" placeholder="Client Name" required>
+              <button type="submit" class="submit-btn">Upload</button>
+          </form>
+      </div>
+  </div>
+
+  <div id="admin-modal" class="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Add New Admin</h2>
+          <form id="admin-form">
+              <input type="text" placeholder="Username" required >
+              <input type="email" placeholder="Email" required>
+              <input type="password" placeholder="Password" required>
+              <button type="submit" class="submit-btn">Create Admin</button>
+          </form>
+      </div>
+  </div>
+  
+    <script src="dashboard.js"></script>
+  </body>
+</html>
